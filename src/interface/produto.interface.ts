@@ -11,6 +11,7 @@ export interface Produto {
   disponivel: boolean;
   categoria: Categoria;
   categoriaId: number;
+  imageUrl: string;
 }
 
 export interface PaginatedResponse<T> {

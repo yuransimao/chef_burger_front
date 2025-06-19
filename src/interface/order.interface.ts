@@ -44,11 +44,18 @@ export enum StatusPedido {
 }
 
 export interface CreatePedidoDto {
+  total: number;
+  observacoes?: string;
+  mesaId?: number;
   itens: {
     produtoId: number;
     quantidade: number;
     preco: number;
   }[];
-  observacoes?: string;
-  mesaId?: number;
+}
+
+
+
+export interface PedidoFilters {
+  status?: StatusPedido;
 }

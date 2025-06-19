@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useProdutos } from '@/hooks/useProdutos';
-import {Button} from "./ui"
+import {Button, ProductItem} from "./"
 
 export function ProdutosList() {
   const [page, setPage] = useState(1);
@@ -100,8 +100,9 @@ export function ProdutosList() {
     );
   }
 
+  
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto py-4">
     
 
      
@@ -112,33 +113,13 @@ export function ProdutosList() {
         </div>
       )}
 
-      {/* Lista de produtos */}
+      
       {isLoading ? (
         <div className="text-center p-8">Carregando produtos...</div>
       ) : (
         <>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {data?.data?.map((produto) => (
-              <div key={produto.id} className="border rounded-lg p-4 shadow-sm">
-                <h3 className="font-semibold text-lg mb-2">{produto.nome}</h3>
-                <p className="text-gray-600 mb-2">{produto.descricao}</p>
-                <p className="text-green-600 font-bold mb-2">
-                 
-                </p>
-                <p className="text-sm text-gray-500 mb-2">
-                  Categoria: {produto.categoria.nome}
-                </p>
-                <span
-                  className={`inline-block px-2 py-1 rounded text-sm ${
-                    produto.disponivel
-                      ? 'bg-green-100 text-green-800'
-                      : 'bg-red-100 text-red-800'
-                  }`}
-                >
-                  {produto.disponivel ? 'Disponível' : 'Indisponível'}
-                </span>
-              </div>
-            ))}
+            {data?.data?.map((produto,index) => <ProductItem {...produto} key={index}/>)}
           </div>
 
          
