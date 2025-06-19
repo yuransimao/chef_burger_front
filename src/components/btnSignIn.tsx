@@ -23,7 +23,7 @@ function BtnSignIn() {
         </button>
     ):(
         <Link href="/login" 
-        className={`flex gap-4 text-white rounde-sm   cursor-pointer`}>
+        className={`flex items-center gap-4 text-white rounde-sm   cursor-pointer`}>
             <span>Entrar</span>
             <LogIn size={18}/>
         </Link>

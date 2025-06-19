@@ -136,4 +136,23 @@
   buttton{
     @apply cursor-pointer;
   }
+
+  .item_scroll::-webkit-scrollbar{
+    width: 7px;
+  }
+
+  .item_scroll::-webkit-scrollbar-thumb{
+    @apply bg-zinc-300 rounded-full;
+  }
+
+  .item_scroll::-webkit-scrollbar-thumb:hover{
+    @apply bg-zinc-100;
+  }
+  .item_scroll::-webkit-scrollbar-thumb:active{
+    @apply bg-zinc-100;
+  }
+
+  .item_scroll::-webkit-scrollbar-track{
+    @apply bg-zinc-100
+  }
 }
