@@ -30,7 +30,7 @@ function Sidebar() {
 
   return (
     <div className='w-full lg:w-56 fixed bg-card bottom-0 lg:h-svh z-30'>
-      <Card className='lg:h-full rounded-tl-none rounded-bl-none'>
+      <Card className='lg:h-full rounded-tl-none rounded-bl-none '>
         <div className='flex flex-col items-center justify-center py-8 space-y-16'>
           <h2 className="lg:inline-block hidden">Logo</h2>
 
