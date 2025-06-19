@@ -1,4 +1,4 @@
-import { PromoBanner } from "@/components";
+import { PromoBanner, ProdutosList } from "@/components";
 import Image  from "next/image";
 
 export default function Home() {
@@ -28,7 +28,7 @@ export default function Home() {
 
           <div className="pt-2 space-y-4">
             <h3 className="font-semibold">Menu</h3>
-
+          <ProdutosList/>
           </div>
         </div>
      
