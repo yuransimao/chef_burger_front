@@ -16,7 +16,7 @@ const ProductItem = React.memo(function ProductItem({
 }: Produto) {
   const dispatch = useAppDispatch();
 
-  // Memoiza o objeto produto (evita recriação)
+ 
   const produto = useMemo(() => ({
     id,
     nome,
@@ -26,7 +26,7 @@ const ProductItem = React.memo(function ProductItem({
     preco
   }), [id, nome, descricao, disponivel, imageUrl, preco]);
 
-  // useCallback evita recriar função em cada render
+ 
   const adicionarProduto = useCallback(() => {
     dispatch(adicionarAoCarrinho({ produto, quantidade: 1 }));
   }, [dispatch, produto]);

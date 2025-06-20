@@ -15,7 +15,7 @@ function InfoProductComponent() {
   const dispatch = useAppDispatch()
   const createPedidoMutation = useCreatePedido()
   
-  // Conectar WebSocket para atualizações em tempo real
+
   useWebSocket()
 
   const handleDecrementar = useCallback(
