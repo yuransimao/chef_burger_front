@@ -12,10 +12,11 @@ interface ContainerLayoutProps {
 function ContainerLayout({children}: ContainerLayoutProps) {
 
   const pathName = usePathname();
-  const showHeaderSignin =  !['/login', '/signin'].includes(pathName);
+  const showHeaderSignin =  !['/login', '/signup'].includes(pathName);
   const showInfoProduct =['/','/search'].includes(pathName)
+  const widthLogin = showHeaderSignin == false ? "w-full" : "w-full lg:w-[calc(100%-14rem)] "
 
-  console.log(showInfoProduct)
+  console.log(widthLogin,showHeaderSignin)
   return (
     <div>
        {showHeaderSignin && (
@@ -24,7 +25,7 @@ function ContainerLayout({children}: ContainerLayoutProps) {
        <Sidebar/>
         </>
        )}
-        <div className={`${showInfoProduct ? "lg:w-[calc(100%-20%-16rem)] w-full" : "w-full lg:w-[calc(100%-14rem)]"}  relative lg:left-56  py-24 px-8 `} >
+        <div className={`${showInfoProduct ? "lg:w-[calc(100%-20%-16rem)] w-full" : widthLogin}  relative    ${showHeaderSignin && 'lg:left-56 py-24 px-8'}`} >
           {children}
         </div>
         <div className="relative ">{showInfoProduct && <InfoProduct/>}</div>

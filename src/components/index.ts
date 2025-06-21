@@ -6,3 +6,5 @@ export * from './produtosList'
 export * from "./productItem"
 export * from "./renderPagination"
 export * from "./productListSearch"
+export * from "./inputContainer"
+export * from "./AuthInitializer"

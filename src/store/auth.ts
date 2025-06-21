@@ -1,53 +1,54 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-
 interface AuthState {
     user_id: string | null;
     user_name: string | null;
     user_email: string | null;
     user_photo: string | null;
-    user_dateBirth:string | null;
-    user_bi:string | null;
     user_phone: string | null;
-    user_contactEmeg: string | null;
-    user_contactoAltEmerg: string | null;
     user_location: string | null;
     isLoggedIn: boolean;
+    loading: boolean;
+    error: string | null;
+    token: string | null;
 }
-
 
 const initialState: AuthState = {
     user_id: null,
     user_name: null,
     user_email: null,
     user_photo: null,
-    user_dateBirth:null,
-    user_bi:null,
     user_phone: null,
-    user_contactEmeg:null,
-    user_contactoAltEmerg: null,
     user_location: null,
     isLoggedIn: false,
+    loading: false,
+    error: null,
+    token: null,
 };
-
 
 const authSlice = createSlice({
     name: "auth",
     initialState,
     reducers: {
-        SET_ACTIVE_USER: (state, action: PayloadAction<{ id: string; name: string; email: string; photo: string; phone:string; ContactEmeg:string; DateBirth:string;location:string; bi:string; contactoAltEmerg:string  }>) => {
-            const { name, id, photo, email,phone, ContactEmeg, DateBirth,location, bi, contactoAltEmerg } = action.payload;
+        SET_ACTIVE_USER: (state, action: PayloadAction<{ 
+            id: string; 
+            name: string; 
+            email: string; 
+            photo: string; 
+            phone: string;
+            location: string; 
+            token?: string;
+        }>) => {
+            const { name, id, photo, email, phone, location, token } = action.payload;
             state.isLoggedIn = true;
             state.user_id = id;
             state.user_name = name;
             state.user_photo = photo;
             state.user_email = email;
-            state.user_bi = bi;
-            state.user_dateBirth= DateBirth;
             state.user_location = location;
             state.user_phone = phone;
-            state.user_contactoAltEmerg = contactoAltEmerg;
-            state.user_contactEmeg = ContactEmeg;
+            state.token = token || null;
+            state.error = null;
         },
         SET_DESACTIVE_USER: (state) => {
             state.isLoggedIn = false;
@@ -55,34 +56,38 @@ const authSlice = createSlice({
             state.user_name = null;
             state.user_photo = null;
             state.user_email = null;
-            state.user_bi = null;
-            state.user_dateBirth= null;
             state.user_location = null;
             state.user_phone = null;
-            state.user_contactoAltEmerg = null;
-            state.user_contactEmeg = null;
+            state.token = null;
+            state.error = null;
         },
+        SET_LOADING: (state, action: PayloadAction<boolean>) => {
+            state.loading = action.payload;
+        },
+        SET_ERROR: (state, action: PayloadAction<string | null>) => {
+            state.error = action.payload;
+            state.loading = false;
+        },
+        CLEAR_ERROR: (state) => {
+            state.error = null;
+        },
+        SET_TOKEN: (state, action: PayloadAction<string | null>) => {
+            state.token = action.payload;
+        }
     },
 });
 
+export const { 
+    SET_ACTIVE_USER, 
+    SET_DESACTIVE_USER, 
+    SET_LOADING, 
+    SET_ERROR, 
+    CLEAR_ERROR,
+    SET_TOKEN 
+} = authSlice.actions;
 
-export const { SET_ACTIVE_USER, SET_DESACTIVE_USER } = authSlice.actions;
-
-
-interface RootState {
-    auth: AuthState;
-}
-
-
-export const selectIsLoggedIn = (state: RootState) => state.auth.isLoggedIn;
-export const selectUserName = (state: RootState) => state.auth.user_name;
-export const selectUserEmail = (state: RootState) => state.auth.user_email;
-export const selectUserId = (state: RootState) => state.auth.user_id;
-export const selectUserPhoto = (state: RootState) => state.auth.user_photo;
-export const selectUserDateBirth = (state: RootState) => state.auth.user_dateBirth;
-export const selectUserBi = (state: RootState) => state.auth.user_bi;
-export const selectUserPhone = (state: RootState) => state.auth.user_phone;
-export const selectUserContactEmeg = (state: RootState) => state.auth.user_contactEmeg;
-export const selectUserContactoAltEmerg = (state: RootState) => state.auth.user_contactoAltEmerg;
-export const selectUserLocation = (state: RootState) => state.auth.user_location;
 export default authSlice.reducer;
+
+
+
+

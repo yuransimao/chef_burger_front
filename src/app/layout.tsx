@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./styles/globals.css";
-import { ContainerLayout } from "@/components";
+import { ContainerLayout, AuthInitializer } from "@/components";
 import {StoreProvider} from "@/store/storeProvider"
 import { QueryProvider } from "@/provider/QueryProvider";
 
@@ -27,6 +27,7 @@ export default function RootLayout({
         <QueryProvider>
           <StoreProvider>
             <ContainerLayout>
+              <AuthInitializer/>
               {children}
             </ContainerLayout>
           </StoreProvider>
