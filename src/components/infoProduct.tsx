@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useMemo, memo, useCallback } from 'react'
-import { Card, Separator, Button } from './'
+import { Card, Separator, Button,Toaster } from './'
 import { Info, Minus, Frown, Loader2 } from 'lucide-react'
 import { useAppSelector, useAppDispatch } from '@/hooks/redux'
 import { FormatCurrency } from '@/helps/formatCurrency'
@@ -10,7 +10,7 @@ import { useCreatePedido } from '@/hooks/usePedidos'
 import { useWebSocket } from '@/hooks/useWebSocket'
 import { CreatePedidoDto } from '@/interface/order.interface'
 import { useAuth } from '@/hooks/useAuth';
-
+import { toast } from 'sonner'
 function InfoProductComponent() {
   const { itens, total } = useAppSelector((state) => state.carrinho)
    const {user_id} = useAuth()
@@ -43,7 +43,13 @@ function InfoProductComponent() {
 
     try {
       await createPedidoMutation.mutateAsync(pedidoData)
-      // Limpar carrinho após sucesso
+      toast("Event has been created", {
+          description: "Sunday, December 03, 2023 at 9:00 AM",
+          action: {
+            label: "Undo",
+            onClick: () => console.log("Undo"),
+          },
+        })
       dispatch(limparCarrinho())
     } catch (error) {
       console.error('Erro ao finalizar pedido:', error)
@@ -67,7 +73,7 @@ function InfoProductComponent() {
               onClick={() => handleDecrementar(item.id)}
               disabled={isFinalizandoPedido}
             >
-              <Minus size={10} className="text-white" />
+              <Minus size={12} className="text-white" />
             </button>
           </div>
         </div>
@@ -80,6 +86,7 @@ function InfoProductComponent() {
 
   return (
     <div className="fixed w-[20%] right-6 h-[84%] lg:block hidden bottom-2">
+      <Toaster/>
       <Card className="h-full p-4">
         <div className="flex justify-between">
           <h4 className="font-medium">Informação pedido</h4>

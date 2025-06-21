@@ -32,7 +32,13 @@ export function useCreatePedido() {
         return old ? [data, ...old] : [data];
       });
 
-      toast.success('Pedido criado com sucesso!');
+      toast("Pedido criado com sucesso", {
+            description: "Seu pedido foi criar ",
+                action: {
+                  label: "Ver",
+                  onClick: () => console.log("Undo"),
+                },
+        })
     },
     onError: (error: any) => {
       toast.error(error?.response?.data?.message || 'Erro ao criar pedido');

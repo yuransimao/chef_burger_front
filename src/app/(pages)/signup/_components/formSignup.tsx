@@ -57,7 +57,7 @@ function FormSignup() {
       await register(userData);
       
       
-      console.log('Usuário registrado com sucesso!');
+     
       
      toast.success('Conta criada com sucesso!');
       form.reset();
