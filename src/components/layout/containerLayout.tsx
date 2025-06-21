@@ -13,7 +13,7 @@ function ContainerLayout({children}: ContainerLayoutProps) {
 
   const pathName = usePathname();
   const showHeaderSignin =  !['/login', '/signup'].includes(pathName);
-  const showInfoProduct =['/','/search'].includes(pathName)
+  const showInfoProduct =['/','/search','pedidos'].includes(pathName)
   const widthLogin = showHeaderSignin == false ? "w-full" : "w-full lg:w-[calc(100%-14rem)] "
 
   console.log(widthLogin,showHeaderSignin)

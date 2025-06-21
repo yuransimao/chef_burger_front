@@ -1,62 +1,83 @@
-export interface Produto {
-  id: number;
-  nome: string;
-  preco: number;
-  descricao?: string;
-  categoria?: string;
-  disponivel: boolean;
-}
-
-export interface ItemCarrinho {
-  id: number; // produtoId
-  produto: Produto;
-  quantidade: number;
-  preco: number;
-}
-
-export interface Pedido {
-  id: number;
-  dataHora: string;
-  total: number;
-  status: StatusPedido;
-  observacoes?: string;
-  clienteId: number;
-  mesaId?: number;
-  itens: ItemPedido[];
-}
-
-export interface ItemPedido {
-  id: number;
-  quantidade: number;
-  preco: number;
-  pedidoId: number;
-  produtoId: number;
-  produto: Produto;
-}
+// interface/order.interface.ts
 
 export enum StatusPedido {
   PENDENTE = 'PENDENTE',
-  CONFIRMADO = 'CONFIRMADO',
-  PREPARANDO = 'PREPARANDO',
+  EM_PREPARO = 'EM_PREPARO',
   PRONTO = 'PRONTO',
   ENTREGUE = 'ENTREGUE',
   CANCELADO = 'CANCELADO'
 }
 
-export interface CreatePedidoDto {
-   firebaseUid: string,
-  total: number;
-  observacoes?: string;
-  mesaId?: number;
-  itens: {
-    produtoId: number;
-    quantidade: number;
-    preco: number;
-  }[];
+export interface ItemPedido {
+  id: number
+  pedidoId: number
+  produtoId: number
+  quantidade: number
+  precoUnitario: number
+  observacoes?: string
+  produto?: Produto
 }
 
+export interface Produto {
+  id: number
+  nome: string
+  descricao?: string
+  preco: number
+  categoria?: string
+  disponivel: boolean
+}
 
+export interface Mesa {
+  id: number
+  numero: number
+  capacidade: number
+  ocupada: boolean
+}
+
+export interface Cliente {
+  id: number
+  firebaseUid: string
+  nome: string
+  email: string
+  telefone?: string
+  endereco?: string
+}
+
+export interface Pedido {
+  id: number
+  clienteId: string
+  mesaId?: number
+  status: StatusPedido
+  dataHora: string | Date
+  valorTotal: number
+  observacoes?: string
+  cliente?: Cliente
+  mesa?: Mesa
+  itens?: ItemPedido[]
+  createdAt?: string | Date
+  updatedAt?: string | Date
+}
+
+export interface CreatePedidoDto {
+  mesaId?: number
+  observacoes?: string
+  itens: {
+    produtoId: number
+    quantidade: number
+    precoUnitario: number
+    observacoes?: string
+  }[]
+}
+
+export interface UpdatePedidoDto {
+  status?: StatusPedido
+  observacoes?: string
+}
 
 export interface PedidoFilters {
-  status?: StatusPedido;
+  status?: StatusPedido
+  clienteId?: string
+  mesaId?: number
+  dataInicio?: string | Date
+  dataFim?: string | Date
 }
