@@ -44,6 +44,7 @@ export enum StatusPedido {
 }
 
 export interface CreatePedidoDto {
+   firebaseUid: string,
   total: number;
   observacoes?: string;
   mesaId?: number;

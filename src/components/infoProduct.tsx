@@ -9,9 +9,11 @@ import { decrementarQuantidade, limparCarrinho } from '@/store/carrinho'
 import { useCreatePedido } from '@/hooks/usePedidos'
 import { useWebSocket } from '@/hooks/useWebSocket'
 import { CreatePedidoDto } from '@/interface/order.interface'
+import { useAuth } from '@/hooks/useAuth';
 
 function InfoProductComponent() {
   const { itens, total } = useAppSelector((state) => state.carrinho)
+   const {user_id} = useAuth()
   const dispatch = useAppDispatch()
   const createPedidoMutation = useCreatePedido()
   
@@ -25,8 +27,9 @@ function InfoProductComponent() {
 
   const handleFinalizarPedido = useCallback(async () => {
     if (itens.length === 0) return
-
-    const pedidoData: CreatePedidoDto = {
+    if(user_id){
+      const pedidoData: CreatePedidoDto = {
+      firebaseUid:user_id,
       total: Number(total),
       itens: itens.map(item => ({
         produtoId: item.produto.id,
@@ -35,6 +38,7 @@ function InfoProductComponent() {
       })),
       observacoes: undefined, 
       mesaId: undefined, 
+      
     }
 
     try {
@@ -44,7 +48,9 @@ function InfoProductComponent() {
     } catch (error) {
       console.error('Erro ao finalizar pedido:', error)
     }
-  }, [itens, total, createPedidoMutation, dispatch])
+    }
+    
+  }, [itens, total, createPedidoMutation, dispatch,user_id])
 
   const isCarrinhoVazio = itens.length === 0
   const isFinalizandoPedido = createPedidoMutation.isPending

@@ -1,10 +1,14 @@
-import React, { useCallback, useMemo } from 'react';
+"use client";
+import React, { useCallback, useMemo, useState } from 'react';
 import Image from "next/image";
 import { Produto } from "@/interface/produto.interface";
 import { useAppDispatch } from "@/hooks/redux";
 import { SquarePlus } from 'lucide-react';
 import { FormatCurrency } from "@/helps/formatCurrency";
 import { adicionarAoCarrinho } from "@/store/carrinho";
+import { AlertUserDesative } from './alertUserDesative';
+import { useAuth } from '@/hooks/useAuth';
+
 
 const ProductItem = React.memo(function ProductItem({
   nome,
@@ -15,8 +19,8 @@ const ProductItem = React.memo(function ProductItem({
   preco
 }: Produto) {
   const dispatch = useAppDispatch();
-
- 
+  const {user_id} = useAuth()
+ const [isOpen, setOpen] = useState(false)
   const produto = useMemo(() => ({
     id,
     nome,
@@ -28,8 +32,15 @@ const ProductItem = React.memo(function ProductItem({
 
  
   const adicionarProduto = useCallback(() => {
-    dispatch(adicionarAoCarrinho({ produto, quantidade: 1 }));
-  }, [dispatch, produto]);
+    if(user_id){
+
+      dispatch(adicionarAoCarrinho({ produto, quantidade: 1 }));
+      setOpen(false)
+    }
+    else{
+      setOpen(true)
+    }
+  }, [dispatch, produto, user_id]);
 
   return (
     <div className="border p-4 rounded-lg shadow-sm">
@@ -68,6 +79,8 @@ const ProductItem = React.memo(function ProductItem({
           </button>
         </div>
       </div>
+
+      <AlertUserDesative isOpen={isOpen} setOpen={setOpen}/>
     </div>
   );
 });
