@@ -9,6 +9,8 @@ import { InfoProduct } from '../infoProduct';
 interface ContainerLayoutProps {
     children: React.ReactNode
 }
+
+
 function ContainerLayout({children}: ContainerLayoutProps) {
 
   const pathName = usePathname();
@@ -16,7 +18,9 @@ function ContainerLayout({children}: ContainerLayoutProps) {
   const showInfoProduct =['/','/search','pedidos'].includes(pathName)
   const widthLogin = showHeaderSignin == false ? "w-full" : "w-full lg:w-[calc(100%-14rem)] "
 
-  console.log(widthLogin,showHeaderSignin)
+  
+  
+    
   return (
     <div>
        {showHeaderSignin && (
