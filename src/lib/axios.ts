@@ -23,12 +23,19 @@ api.interceptors.request.use(
 // Interceptador para lidar com erros de autenticação
 api.interceptors.response.use(
   (response) => response,
-  (error) => {
-    if (error.response?.status === 401) {
-      // Token expirado ou inválido
-      auth.signOut();
-      window.location.href = '/login';
+  async (error) => {
+    const isAuthError = error.response?.status === 401;
+    const user = auth.currentUser;
+
+    // Se ainda está logando ou não há usuário, não redireciona
+    if (isAuthError && user) {
+      console.warn("Token expirado ou inválido. Considerar redirecionar.");
+      // auth.signOut(); // Só se quiser forçar logout
+      if (window.location.pathname !== '/login') {
+        window.location.href = '/login';
+      }
     }
+
     return Promise.reject(error);
   }
 );

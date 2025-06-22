@@ -4,7 +4,8 @@ import React from 'react'
 import { Card } from '../ui'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { BookOpenText, BookCheck, NotebookPen } from 'lucide-react'
+import { BookOpenText, BookCheck } from 'lucide-react'
+import { BtnUppsertBooking } from '../btnUppsertBooking'
 import clsx from 'clsx'
 
 function Sidebar() {
@@ -20,12 +21,7 @@ function Sidebar() {
       href: '/pedidos',
       icon: <BookCheck size={18} />,
       title: 'Pedidos',
-    },
-    {
-      href: '/reservas',
-      icon: <NotebookPen size={18} />,
-      title: 'Fazer Reserva',
-    },
+    }
   ]
 
   return (
@@ -53,6 +49,8 @@ function Sidebar() {
                 </Link>
               )
             })}
+
+            <BtnUppsertBooking/>
           </nav>
         </div>
       </Card>
