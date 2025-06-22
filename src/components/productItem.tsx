@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import Image from "next/image";
 import { Produto } from "@/interface/produto.interface";
 import { useAppDispatch } from "@/hooks/redux";
@@ -9,6 +9,7 @@ import { adicionarAoCarrinho } from "@/store/carrinho";
 import { AlertUserDesative } from './alertUserDesative';
 import { useAuth } from '@/hooks/useAuth';
 
+import { closeModalAlert,openModalAlert } from "@/store/modalSlice"
 
 const ProductItem = React.memo(function ProductItem({
   nome,
@@ -20,7 +21,7 @@ const ProductItem = React.memo(function ProductItem({
 }: Produto) {
   const dispatch = useAppDispatch();
   const {user_id} = useAuth()
- const [isOpen, setOpen] = useState(false)
+  
   const produto = useMemo(() => ({
     id,
     nome,
@@ -35,10 +36,10 @@ const ProductItem = React.memo(function ProductItem({
     if(user_id){
 
       dispatch(adicionarAoCarrinho({ produto, quantidade: 1 }));
-      setOpen(false)
+      dispatch(closeModalAlert())
     }
     else{
-      setOpen(true)
+      dispatch(openModalAlert())
     }
   }, [dispatch, produto, user_id]);
 
@@ -80,7 +81,7 @@ const ProductItem = React.memo(function ProductItem({
         </div>
       </div>
 
-      <AlertUserDesative isOpen={isOpen} setOpen={setOpen}/>
+      <AlertUserDesative />
     </div>
   );
 });

@@ -11,26 +11,27 @@ import {
   AlertDialogTrigger,
 } from "./ui"
 import { useRouter } from 'next/navigation';
-interface AlertUserDesativeProps{
-    isOpen: boolean
-    setOpen: (open: boolean) => void
-}
-function AlertUserDesative({ setOpen, isOpen }: AlertUserDesativeProps) {
+import { useAppSelector, useAppDispatch } from "@/hooks"
+import { closeModalAlert } from "@/store/modalSlice"
+
+function AlertUserDesative() {
+  const dispatch= useAppDispatch();
+  const isOpenAlert = useAppSelector(state => state.modal.isOpenAlert)
   const router = useRouter();
 
   const handleRedirectToLogin = () => {
-    setOpen(false);
+    dispatch(closeModalAlert())
     router.push('/login'); 
   };
 
   return (
-    <AlertDialog onOpenChange={(open) => setOpen(open)} open={isOpen}>
+    <AlertDialog onOpenChange={(open) => {if (!open)  dispatch(closeModalAlert())}} open={isOpenAlert}>
       <AlertDialogTrigger></AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Login necessário</AlertDialogTitle>
           <AlertDialogDescription>
-            Você precisa estar logado para adicionar um produto ao carrinho. Faça login para continuar com o pedido.
+            Você precisa estar logado para adicionar um produto ao carrinho e fazer reserva. Faça login para continuar com o pedido.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
