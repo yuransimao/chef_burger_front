@@ -1,4 +1,4 @@
-// interface/order.interface.ts
+
 
 export enum StatusPedido {
   PENDENTE = 'PENDENTE',
@@ -18,6 +18,13 @@ export interface ItemPedido {
   produto?: Produto
 }
 
+export interface ItemCarrinho {
+  id: number
+  produto: Produto
+  quantidade: number
+  preco: number
+  observacoes?: string
+}
 export interface Produto {
   id: number
   nome: string
