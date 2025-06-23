@@ -18,7 +18,7 @@ function BtnOpenSheetcarrinho() {
     }
   return (
     <>
-    <Button variant="outline" className=' rounded-full h-12 w-12 lg:hidden block' onClick={handleOpen}>
+    <Button variant="outline" className=' rounded-full h-12 w-12 lg:hidden flex items-center justify-center' onClick={handleOpen}>
         <ShoppingCart/>
     </Button>
 

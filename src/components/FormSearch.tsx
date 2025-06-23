@@ -34,7 +34,7 @@ function FormSearch() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="lg:w-[85%] md:w-[60%] ">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="lg:w-[85%] md:w-[60%] w-[60%]">
         <FormField
           control={form.control}
           name="search"

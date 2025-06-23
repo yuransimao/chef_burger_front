@@ -1,8 +1,10 @@
 import axios from 'axios';
 import {auth} from "@/lib/firebase";
 
+
+const urlBase = "https://chef-burger-backend.onrender.com"
 export const api = axios.create({
-  baseURL: 'http://localhost:3000', 
+  baseURL: urlBase, 
   withCredentials: true,
 });
 

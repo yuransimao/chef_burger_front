@@ -6,7 +6,13 @@ function Pedidos() {
    const { token, loading } = useAuth()
 
   if (loading || !token) {
-    return <p className="text-center mt-10">Carregando...</p>
+    return  (
+        <div className="w-full">
+          <div className="flex items-center justify-center h-64">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-red-400"></div>
+          </div>
+        </div>
+      )
   }
 
   return (

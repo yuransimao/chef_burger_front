@@ -29,10 +29,9 @@ function UpperSetSheetCarinho() {
   <SheetTrigger></SheetTrigger>
   <SheetContent>
     <SheetHeader>
-      <SheetTitle>Informação pedido</SheetTitle>
+      <SheetTitle>Informações dos pedidos</SheetTitle>
       <SheetDescription>
-        This action cannot be undone. This will permanently delete your account
-        and remove your data from our servers.
+        
       </SheetDescription>
     </SheetHeader>
 

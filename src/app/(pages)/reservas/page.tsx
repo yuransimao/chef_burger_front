@@ -17,14 +17,13 @@ function Reservas() {
  
 
   if (isLoading) {
-    return (
-      <div className="flex h-[calc(100svh-20rem)] items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Carregando suas reservas...</p>
+    return  (
+        <div className="w-full">
+          <div className="flex items-center justify-center h-64">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-red-400"></div>
+          </div>
         </div>
-      </div>
-    );
+      );
   }
 
   if (error) {

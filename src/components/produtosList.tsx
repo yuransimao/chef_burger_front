@@ -40,9 +40,11 @@ export function ProdutosList({ filters = {} }: ProdutosListProps) {
   return (
     <div className="container lg:mx-auto md:mx-auto py-4">
       {/* Loading indicator */}
-      {isFetching && (
-        <div className="text-blue-500 text-center p-2">
-          Carregando...
+      {isFetching &&  (
+        <div className="w-full">
+          <div className="flex items-center justify-center h-64">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-red-400"></div>
+          </div>
         </div>
       )}
 

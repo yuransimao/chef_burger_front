@@ -2,7 +2,7 @@ import React from 'react'
 import Image from "next/image"
 function LogoImage() {
   return (
-    <div className='h-14'>
+    <div className='h-14 lg:block hidden'>
          <Image
             height={0}
             width={0}

@@ -42,7 +42,7 @@ export const CategoriasList = ({
   }
 
   return (
-    <div className="flex gap-4 overflow-x-auto">
+    <div className="flex gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden">
      
       {mostrarVerTodos && (
         <div

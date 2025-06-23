@@ -10,7 +10,13 @@ export interface WebSocketMessage {
   data: Pedido;
 }
 
-export function useWebSocket(url: string = 'ws://localhost:3001') {
+const urlws =
+  process.env.NODE_ENV === 'development'
+    ? 'ws://localhost:3001'
+    : 'wss://chef-burger-front.vercel.app';
+
+
+export function useWebSocket(url: string = urlws) {
   const queryClient = useQueryClient();
   const wsRef = useRef<WebSocket | null>(null);
   const reconnectTimeoutRef = useRef<NodeJS.Timeout | null>(null);
