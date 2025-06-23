@@ -187,11 +187,16 @@ export const useAuth = () => {
 
       dispatch(SET_LOADING(false));
       return backendUser;
-    } catch (error: any) {
-      const errorMessage = error.response?.data?.message || error.message || 'Erro ao buscar dados do usuário';
-      dispatch(SET_ERROR(errorMessage));
-      dispatch(SET_LOADING(false));
-      throw error;
+    } catch (error: unknown) {
+      let errorCode = "unknown";
+
+  if (typeof error === "object" && error !== null && "code" in error) {
+    errorCode = String((error as { code: string }).code) as keyof typeof ErroMessage;
+  }
+
+  dispatch(SET_ERROR(errorCode));
+  dispatch(SET_LOADING(false));
+  throw error;
     }
   };
 
