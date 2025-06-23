@@ -42,7 +42,7 @@ function FormLogin() {
       toast.success('Login realizado com sucesso!');
       router.push('/');
       
-    } catch (error: any) {
+    } catch (error:unknown) {
       console.error('Erro ao fazer login:', error);
     }
   }
