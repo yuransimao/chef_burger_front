@@ -1,0 +1,37 @@
+
+
+export const ErroMessage = {
+    "auth/app-deleted": "O projeto do Firebase foi deletado.",
+    "auth/app-not-authorized": "O domínio atual não está autorizado para usar Firebase Authentication.",
+    "auth/argument-error": "Argumentos inválidos foram fornecidos para uma função de autenticação.",
+    "auth/configuration-not-found": "O Firebase não foi configurado corretamente.",
+    "auth/invalid-api-key": "A chave de API fornecida é inválida ou está faltando.",
+    "auth/network-request-failed": "Erro de conexão com a rede. Verifique sua conexão.",
+    "auth/operation-not-allowed": "O método de autenticação não está ativado no console do Firebase.",
+    "auth/too-many-requests": "Muitas requisições foram feitas em um curto período. Tente novamente mais tarde.",
+    "auth/unauthorized-domain": "O domínio atual não está listado como autorizado no Firebase Console.",
+    "auth/email-already-in-use": "O e-mail fornecido já está associado a outra conta.",
+    "auth/invalid-email": "O e-mail fornecido não é válido.",
+    "auth/weak-password": "A senha fornecida é muito fraca. Geralmente, menos de 6 caracteres.",
+    "auth/user-disabled": "A conta do usuário foi desativada.",
+    "auth/user-not-found": "Não há registro de usuário correspondente ao e-mail fornecido.",
+    "auth/wrong-password": "A senha está incorreta.",
+    "auth/account-exists-with-different-credential": "A conta já existe com um método de login diferente.",
+    "auth/auth-domain-config-required": "O domínio de autenticação não está configurado no Firebase Console.",
+    "auth/cancelled-popup-request": "Uma nova solicitação foi feita antes de a anterior ser concluída.",
+    "auth/popup-blocked": "O navegador bloqueou o popup de autenticação.",
+    "auth/popup-closed-by-user": "O usuário fechou o popup de autenticação antes de concluir o processo.",
+    "auth/expired-action-code": "O link de redefinição de senha expirou.",
+    "auth/invalid-action-code": "O código de ação fornecido é inválido ou foi usado.",
+    "auth/id-token-expired": "O token de ID expirou. O usuário precisa fazer login novamente.",
+    "auth/invalid-id-token": "O token de ID fornecido é inválido.",
+    "auth/user-token-expired": "O token de usuário expirou. Faça login novamente.",
+    "auth/web-storage-unsupported": "O navegador não suporta armazenamento da web ou isso está desativado.",
+    "auth/cordova-not-ready": "O Cordova não está pronto para usar serviços do Firebase.",
+    "auth/operation-not-supported-in-this-environment": "O método de autenticação não é compatível com o ambiente atual.",
+    "auth/invalid-phone-number": "O número de telefone fornecido é inválido.",
+    "auth/missing-phone-number": "Um número de telefone é necessário, mas não foi fornecido.",
+    "auth/quota-exceeded": "O limite de SMS foi excedido.",
+    "auth/invalid-credential": "Credencial inválida"
+  };
+  

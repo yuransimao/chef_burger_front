@@ -1,6 +1,8 @@
 import { useAppSelector, useAppDispatch } from './redux'
 import { AppState } from '@/store/store';
 import { authService, CreateUserData, LoginData } from '@/services/authService';
+import {ErroMessage} from "@/helps/errorMessagefirabase"
+import { User } from 'firebase/auth';
 import { 
   SET_ACTIVE_USER, 
   SET_DESACTIVE_USER, 
@@ -39,11 +41,16 @@ export const useAuth = () => {
       dispatch(SET_LOADING(false));
 
       return result;
-    } catch (error: any) {
-      const errorMessage = error.response?.data?.message || error.message || 'Erro ao criar usuário';
-      dispatch(SET_ERROR(errorMessage));
-      dispatch(SET_LOADING(false));
-      throw error;
+    } catch (error: unknown) {
+        let errorCode = "unknown";
+
+  if (typeof error === "object" && error !== null && "code" in error) {
+    errorCode = String((error as { code: string }).code) as keyof typeof ErroMessage;
+  }
+
+  dispatch(SET_ERROR(errorCode));
+  dispatch(SET_LOADING(false));
+  throw error;
     }
   };
 
@@ -72,11 +79,16 @@ export const useAuth = () => {
       dispatch(SET_LOADING(false));
 
       return result;
-    } catch (error: any) {
-      const errorMessage = error.response?.data?.message || error.message || 'Erro ao fazer login';
-      dispatch(SET_ERROR(errorMessage));
-      dispatch(SET_LOADING(false));
-      throw error;
+    } catch (error: unknown) {
+     let errorCode = "unknown";
+
+  if (typeof error === "object" && error !== null && "code" in error) {
+    errorCode = String((error as { code: string }).code) as keyof typeof ErroMessage;
+  }
+
+  dispatch(SET_ERROR(errorCode));
+  dispatch(SET_LOADING(false));
+  throw error;
     }
   };
 
@@ -87,10 +99,16 @@ export const useAuth = () => {
       await authService.logout();
       dispatch(SET_DESACTIVE_USER());
       dispatch(SET_LOADING(false));
-    } catch (error: any) {
-      const errorMessage = error.message || 'Erro ao fazer logout';
-      dispatch(SET_ERROR(errorMessage));
-      dispatch(SET_LOADING(false));
+    } catch (error: unknown) {
+       let errorCode = "unknown";
+
+  if (typeof error === "object" && error !== null && "code" in error) {
+    errorCode = String((error as { code: string }).code) as keyof typeof ErroMessage;
+  }
+
+  dispatch(SET_ERROR(errorCode));
+  dispatch(SET_LOADING(false));
+  throw error;
     }
   };
 
@@ -98,7 +116,7 @@ export const useAuth = () => {
     dispatch(CLEAR_ERROR());
   };
 
-  const setUserFromFirebase = async (firebaseUser: any) => {
+  const setUserFromFirebase = async (firebaseUser: User | null) => {
     if (firebaseUser) {
       try {
        
