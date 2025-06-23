@@ -4,12 +4,15 @@ import { useMinhasReservas} from '@/hooks/useReserva';
 
 import { Calendar,  AlertCircle } from 'lucide-react';
 import { CardReserva } from './_components/cardReserva';
-
+import { useAuth } from '@/hooks/useAuth'
 
 function Reservas() {
   const { data: reservas, isLoading, error } = useMinhasReservas();
+  const { token, loading } = useAuth()
   
-  
+ if (loading || !token) {
+    return <p className="text-center mt-10">Carregando...</p>
+  }
 
  
 

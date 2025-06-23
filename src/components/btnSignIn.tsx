@@ -34,7 +34,7 @@ function BtnSignIn() {
                 <AvatarFallback>CN</AvatarFallback>
             </Avatar>
 
-          <span className="text-sm font-semibold text-zinc-200">
+          <span className="text-sm font-semibold text-zinc-200 lg:block md:blok hidden">
             {user_name}
         </span>
               </>
@@ -46,6 +46,12 @@ function BtnSignIn() {
   </DropdownMenuTrigger>
   <DropdownMenuContent>
     <DropdownMenuLabel>My Account</DropdownMenuLabel>
+    <DropdownMenuLabel> 
+      <Link href="/reservas" 
+        className={` text-white rounde-sm   cursor-pointer`}>
+           Minhas reservas
+        </Link>
+      </DropdownMenuLabel>
     <DropdownMenuSeparator />
     
     <DropdownMenuItem onClick={logout}>Sair</DropdownMenuItem>

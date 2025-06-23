@@ -59,12 +59,13 @@ export interface Pedido {
 }
 
 export interface CreatePedidoDto {
+  total:number
   mesaId?: number
   observacoes?: string
   itens: {
     produtoId: number
     quantidade: number
-    precoUnitario: number
+    precoUnitario?: number
     observacoes?: string
   }[]
 }

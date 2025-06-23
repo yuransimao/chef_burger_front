@@ -1,10 +1,14 @@
 import {useCallback} from 'react'
+
+interface Disponibilidade {
+  disponivel: boolean;
+}
 export const UseAvailabilityStatus = () => {
     const renderAvailabilityStatus = useCallback((
         shouldCheckAvailability: boolean,
         isCheckingAvailability: boolean,
-        availabilityError: any,
-        disponibilidade: any
+        availabilityError: unknown,
+        disponibilidade: Disponibilidade
     ) => {
         if (!shouldCheckAvailability) return null;
 

@@ -84,7 +84,7 @@ function FormLogin() {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full bg-red-500 text-white duration-300 transition-colors hover:bg-700">
+        <Button type="submit" className="w-full bg-red-500 text-white duration-300 transition-colors hover:bg-700 cursor-pointer">
          {loading ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />

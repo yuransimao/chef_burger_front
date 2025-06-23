@@ -1,9 +1,9 @@
-// hooks/useReserva.ts
+
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { reservaService } from '@/services/reservaService';
 import { CreateReservaDto, UpdateReservaDto } from '@/interface/reserva.interface';
-import { toast } from 'sonner'; // ou sua biblioteca de toast preferida
-
+import { toast } from 'sonner'; 
+import axios from 'axios';
 
 export const useMinhasReservas = () => {
   return useQuery({
@@ -30,23 +30,33 @@ export const useVerificarDisponibilidade = (
 
 export const useCriarReserva = () => {
   const queryClient = useQueryClient();
+  
 
   return useMutation({
     mutationFn: (data: CreateReservaDto) => reservaService.criarReserva(data),
-    onSuccess: (data) => {
+    onSuccess: () => {
      
       queryClient.invalidateQueries({ queryKey: ['minhas-reservas'] });
       
      
       queryClient.invalidateQueries({ queryKey: ['mesas-disponiveis'] });
       
-      toast.success('Reserva criada com sucesso!');
+      toast("Reserva criada com sucesso", {
+            description: "Sua reserva foi agendada",
+                action: {
+                  label: "Ver",
+                  onClick: () => console.log("reservas"),
+                },
+        })
     },
-    onError: (error: any) => {
-      const message = error?.response?.data?.message || 'Erro ao criar reserva';
-      toast.error(message);
-    },
-  });
+     onError: (error: unknown) => {
+  let errorMessage = 'Erro ao criar reservas';
+
+  if (axios.isAxiosError(error) && error.response?.data?.message) {
+    errorMessage = error.response.data.message;
+  }
+   toast.error(errorMessage);
+  }});
 };
 
 
@@ -65,11 +75,14 @@ export const useAtualizarReserva = () => {
       
       toast.success('Reserva atualizada com sucesso!');
     },
-    onError: (error: any) => {
-      const message = error?.response?.data?.message || 'Erro ao atualizar reserva';
-      toast.error(message);
-    },
-  });
+     onError: (error: unknown) => {
+      let errorMessage = 'Erro ao alualizar resrva';
+    
+      if (axios.isAxiosError(error) && error.response?.data?.message) {
+        errorMessage = error.response.data.message;
+      }
+     toast.error(errorMessage);
+  }});
 };
 
 // Hook para cancelar reserva
@@ -87,11 +100,14 @@ export const useCancelarReserva = () => {
       
       toast.success('Reserva cancelada com sucesso!');
     },
-    onError: (error: any) => {
-      const message = error?.response?.data?.message || 'Erro ao cancelar reserva';
-      toast.error(message);
-    },
-  });
+     onError: (error: unknown) => {
+      let errorMessage = 'Erro ao cancelar reserva';
+    
+      if (axios.isAxiosError(error) && error.response?.data?.message) {
+        errorMessage = error.response.data.message;
+      }
+       toast.error(errorMessage);
+  }});
 };
 
 

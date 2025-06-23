@@ -1,4 +1,4 @@
-// hooks/useWebSocket.ts
+
 import { useEffect, useRef, useCallback } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
@@ -118,7 +118,7 @@ export function useWebSocket(url: string = 'ws://localhost:3001') {
     isConnectedRef.current = false;
   }, []);
 
-  const sendMessage = useCallback((message: any) => {
+  const sendMessage = useCallback((message: unknown) => {
     if (wsRef.current?.readyState === WebSocket.OPEN) {
       wsRef.current.send(JSON.stringify(message));
     } else {

@@ -16,7 +16,7 @@ function BtnUppsertBooking() {
       }
   return (
     <>
-    <button className="flex items-center bg-transparent gap-3 lg:px-6  px-3 py-3 rounded-sm text-muted-foreground transition-colors hover:bg-red-500/5 hover:text-primary  w-full"  onClick={handleOpenReser}> 
+    <button className="flex flex-col lg:flex-row items-center bg-transparent gap-3 lg:px-6  px-3 py-3 rounded-sm text-muted-foreground transition-colors hover:bg-red-500/5 hover:text-primary  w-full"  onClick={handleOpenReser}> 
     <span><NotebookPen size={18} /></span>
     <span>Fazer reserva</span>
     </button>

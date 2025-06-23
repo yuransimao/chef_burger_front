@@ -8,7 +8,7 @@ function Signup() {
     return (
         <div className="h-svh flex ">
             <Toaster/>
-            <div className="w-[70%] h-full brightness-50">
+            <div className="w-[70%] h-full brightness-50 lg:block md:blok sm:block hidden">
                 <Image
                     height={0}
                     width={0}
@@ -19,7 +19,7 @@ function Signup() {
                     alt='logo'
                 />
             </div>
-            <div className='w-[30%]'>
+            <div className='lg:w-[30%] md:w-[w-[30%] sm:w-[30%] w-full'>
                 <div className="w-full space-y-5 flex flex-col justify-center px-8 h-full">
                     <div className='h-16'>
                         <Image
@@ -36,8 +36,8 @@ function Signup() {
 
                     </div>
                     <div className='space-y-2'>
-                        <h2 className=' font-bold text-lg'>Registra-se</h2>
-                        <p className=" text-sm  text-gray-300">Já possui uma conta ?
+                        <h2 className=' font-bold text-lg text-center'>Registra-se</h2>
+                        <p className=" text-sm  text-gray-300 text-center">Já possui uma conta ?
                             <Link
                                 href='/signup'
                                 className="text-blue-500 font-bold ml-2 " >

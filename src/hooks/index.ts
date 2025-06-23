@@ -10,3 +10,4 @@ export * from './useAvailabilityStatus';
 export * from "./useWebSocket"
 export * from "./useBookingForm"
 export * from './useAvailabilityCheck';
+export * from "./useCarrinho";

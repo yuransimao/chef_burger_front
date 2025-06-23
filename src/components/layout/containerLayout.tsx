@@ -29,7 +29,7 @@ function ContainerLayout({children}: ContainerLayoutProps) {
        <Sidebar/>
         </>
        )}
-        <div className={`${showInfoProduct ? "lg:w-[calc(100%-20%-16rem)] w-full" : widthLogin}  relative    ${showHeaderSignin && 'lg:left-56 py-24 px-8'}`} >
+        <div className={`${showInfoProduct ? "lg:w-[calc(100%-20%-16rem)] w-full" : widthLogin}  relative    ${showHeaderSignin && 'lg:left-56 pt-24 lg:pb-24 pb-32 px-8'}`} >
           {children}
         </div>
         <div className="relative ">{showInfoProduct && <InfoProduct/>}</div>

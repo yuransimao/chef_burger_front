@@ -1,15 +1,33 @@
-import { PromoBanner, ProdutosList } from "@/components";
-import Image  from "next/image";
-import Head from "next/head"
+"use client"
+import { PromoBanner, ProdutosList, CategoriasList } from "@/components";
+import { Categoria } from "@/interface/categoria.interface";
+import { ProdutoFilters } from "@/interface/produto.interface";
+import Head from "next/head";
+import { useState } from "react";
+
 export default function Home() {
+  const [categoriaSelecionada, setCategoriaSelecionada] = useState<number | null>(null);
+  const [filters, setFilters] = useState<ProdutoFilters>({});
+
+  const handleCategoriaSelect = (categoria: Categoria) => {
+    setCategoriaSelecionada(categoria.id);
+    setFilters({ categoriaId: categoria.id });
+    console.log('Categoria selecionada:', categoria);
+  };
+
+  const handleVerTodos = () => {
+    setCategoriaSelecionada(null);
+    setFilters({});
+    console.log('Mostrar todos os produtos');
+  };
+
   return (
     <>
-    <Head>
-    <title>Menu | Chef Burger</title>
-    </Head>
-    <main>
-      <section className=" w-full">
-       
+      <Head>
+        <title>Menu | Chef Burger</title>
+      </Head>
+      <main>
+        <section className="w-full">
           <div>
             <PromoBanner
               src="/promo-banner-01.png"
@@ -17,25 +35,27 @@ export default function Home() {
             />
           </div>
           <div className="pt-6 space-y-4">
-            <h2 className="font-semibold">Escolhe uma categoria</h2>
-            <div className="flex">
-              <div className="flex flex-col items-center justifify-center gap-2 bg-card p-4 rounded-sm hover:bg-red-700/20 cursor-pointer ">
-                <Image
-                width={30}
-                height={30}
-                src="https://utfs.io/f/92918634-fc03-4425-bc1f-d1fbc8933586-vzk6us.png"
-                alt="ham"/>
-                <span className="text-sm font-semibold">Hamburger</span>
-              </div>
-            </div>
+              <h2 className="font-semibold">Escolhe uma categoria</h2>
+            
+            <CategoriasList 
+              onCategoriaSelect={handleCategoriaSelect}
+              onVerTodos={handleVerTodos}
+              categoriaSelecionada={categoriaSelecionada}
+            />
             <div className="pt-2 space-y-4">
-              <h3 className="font-semibold">Menu</h3>
-            <ProdutosList/>
+              <div className="flex items-center justify-between">
+                <h3 className="font-semibold">Menu</h3>
+                {categoriaSelecionada && (
+                  <span className="text-sm text-gray-500">
+                    Filtrado por categoria
+                  </span>
+                )}
+              </div>
+              <ProdutosList filters={filters} />
             </div>
           </div>
-      
-      </section>
-    </main>
+        </section>
+      </main>
     </>
   );
 }

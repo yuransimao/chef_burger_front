@@ -2,24 +2,25 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
 import { pedidoService } from '@/services/orderService';
 import { StatusPedido, Pedido } from '@/interface/order.interface';
+import axios from 'axios';
 
 export const PEDIDO_KEYS = {
   all: ['pedidos'] as const,
   lists: () => [...PEDIDO_KEYS.all, 'list'] as const,
-  list: (filters: Record<string, any>) => [...PEDIDO_KEYS.lists(), { filters }] as const,
+  list: (filters: Record<string, unknown>) => [...PEDIDO_KEYS.lists(), { filters }] as const,
   details: () => [...PEDIDO_KEYS.all, 'detail'] as const,
   detail: (id: number) => [...PEDIDO_KEYS.details(), id] as const,
   meusPedidos: () => [...PEDIDO_KEYS.all, 'meus-pedidos'] as const,
   byStatus: (status?: StatusPedido) => [...PEDIDO_KEYS.all, 'status', status] as const,
 };
-
 export function useCreatePedido() {
   const queryClient = useQueryClient();
+  
 
   return useMutation({
     mutationFn: pedidoService.createPedido,
     onSuccess: (data) => {
-      // Invalidar queries relacionadas
+     
       queryClient.invalidateQueries({ queryKey: PEDIDO_KEYS.all });
       
       // Adicionar o novo pedido às listas em cache
@@ -33,16 +34,22 @@ export function useCreatePedido() {
       });
 
       toast("Pedido criado com sucesso", {
-            description: "Seu pedido foi criar ",
+            description: "Seu pedido foi criada ",
                 action: {
                   label: "Ver",
-                  onClick: () => console.log("Undo"),
+                  onClick: () => console.log("ver"),
                 },
         })
     },
-    onError: (error: any) => {
-      toast.error(error?.response?.data?.message || 'Erro ao criar pedido');
-    },
+    onError: (error: unknown) => {
+  let errorMessage = 'Erro ao criar pedido';
+
+  if (axios.isAxiosError(error) && error.response?.data?.message) {
+    errorMessage = error.response.data.message;
+  }
+
+  toast.error(errorMessage);
+}
   });
 }
 
@@ -91,9 +98,15 @@ export function useUpdateStatusPedido() {
 
       toast.success('Status do pedido atualizado!');
     },
-    onError: (error: any) => {
-      toast.error(error?.response?.data?.message || 'Erro ao atualizar status');
-    },
+   onError: (error: unknown) => {
+  let errorMessage = 'Erro ao criar pedido';
+
+  if (axios.isAxiosError(error) && error.response?.data?.message) {
+    errorMessage = error.response.data.message;
+  }
+
+  toast.error(errorMessage);
+}
   });
 }
 

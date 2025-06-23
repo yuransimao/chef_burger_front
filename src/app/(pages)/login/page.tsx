@@ -51,7 +51,7 @@ function Login() {
                 </div>
 
                 <div>
-                  <Button variant="secondary" className='w-full'>
+                  <Button variant="secondary" className='w-full cursor-pointer'>
                       <FcGoogle size={20}/>
                   </Button>
                 </div>
