@@ -54,7 +54,7 @@ export const authService = {
         backendUser: backendResponse.data,
         token
       };
-    } catch (error: any) {
+    } catch (error: unknown) {
       // Se falhar no backend, deletar usuário do Firebase
       if (auth.currentUser) {
         await auth.currentUser.delete();
@@ -104,7 +104,7 @@ export const authService = {
     return null;
   },
 
-  // Buscar dados do usuário no backend
+  
   async getUserFromBackend(token?: string) {
     try {
       const authToken = token || await this.getCurrentToken();

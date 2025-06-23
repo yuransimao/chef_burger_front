@@ -4,9 +4,12 @@ import  {BookingFormData} from "./useBookingForm"
 import {useAppDispatch} from "@/hooks"
 import {closeModalDialog} from "@/store/modalSlice"
 import { UseFormReturn } from "react-hook-form";
+
 interface Disponibilidade {
   disponivel: boolean;
+  conflitos?: unknown[] | undefined; 
 }
+
 export const UseBookingSubmit = () => {
     const { user_id } = useAuth();
     const criarReservaMutation = useCriarReserva();
@@ -14,8 +17,8 @@ export const UseBookingSubmit = () => {
 
     const submitBooking = useCallback((
         data: BookingFormData,
-        disponibilidade: Disponibilidade,
-        form:UseFormReturn<FormData>,
+        disponibilidade: Disponibilidade| undefined,
+        form:UseFormReturn<BookingFormData>,
         setShouldCheckAvailability: (value: boolean) => void
     ) => {
         if (!user_id) {

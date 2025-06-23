@@ -20,7 +20,7 @@ export const reservaService = {
     mesaId: string,
     dataHora: string,
     duracao: number
-  ): Promise<{ disponivel: boolean; conflitos?: any[] }> {
+  ): Promise<{ disponivel: boolean; conflitos?: unknown[] }> {
     const response = await api.get('/reservas/disponibilidade', {
       params: {
         mesaId,

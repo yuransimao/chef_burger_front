@@ -13,15 +13,13 @@ import { TimeInput } from './timeInput'
 import { format } from "date-fns"
 import { ptBR } from "date-fns/locale"
 
-import { useVerificarDisponibilidade, useMesasDisponiveis } from '@/hooks'
-import {
-    UseBookingForm,
+import { useVerificarDisponibilidade, useMesasDisponiveis,UseBookingForm,
     UseAvailabilityCheck,
     UseTableSelection,
     UseBookingSubmit,
     UseAvailabilityStatus,
-     BookingFormData
-} from '@/hooks'
+     BookingFormData } from '@/hooks'
+
 
 function FormBooking() {
     const { form } = UseBookingForm();
@@ -52,6 +50,8 @@ function FormBooking() {
         selectedDuration,
         shouldCheckAvailability
     );
+
+   
 
     
     useEffect(() => {

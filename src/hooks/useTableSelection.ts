@@ -1,14 +1,10 @@
 import { useCallback, useEffect } from "react";
 import { UseFormReturn } from "react-hook-form";
 import { Mesa } from "@/interface/mesa.interface";
+import {BookingFormData} from "./useBookingForm"
 
-interface FormData {
-  table: string;
-  numberperson: string;
-}
-
-export const useTableSelection = (
-  form: UseFormReturn<FormData>,
+export const UseTableSelection = (
+  form: UseFormReturn<BookingFormData>,
   mesas: Mesa[] | undefined
 ) => {
   const getMesaSelecionada = useCallback(
