@@ -5,9 +5,9 @@ import { Card } from '../ui'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { BookOpenText, BookCheck } from 'lucide-react'
-import { BtnUppsertBooking } from '../btnUppsertBooking'
 import clsx from 'clsx'
 import { LogoImage } from '../logoImage'
+import {BtnOpenSheetcarrinho} from "../btnopenSheetcarrinho"
 
 function Sidebar() {
   const pathname = usePathname()
@@ -36,7 +36,7 @@ function Sidebar() {
             </Link>
           </div>
 
-          <nav className=' lg:space-y-6  gap-x-4 flex lg:flex-col flex-row w-full lg:w-auto '>
+          <nav className=' lg:space-y-6  gap-x-4 flex items-center lg:flex-col flex-row w-full lg:w-auto '>
             {itemNav.map((item, index) => {
               const isActive = pathname === item.href
               return (
@@ -56,7 +56,7 @@ function Sidebar() {
               )
             })}
 
-            <BtnUppsertBooking/>
+            <BtnOpenSheetcarrinho/>
           </nav>
 
           

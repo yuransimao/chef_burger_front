@@ -86,7 +86,7 @@ function TableOrder() {
         </div>
   
        
-        <div className="flex flex-col sm:flex-row gap-4 justify-end">
+        <div className="flex gap-4 justify-end">
           
           
           <Select value={statusFilter} onValueChange={setStatusFilter}>
@@ -173,7 +173,7 @@ function TableOrder() {
         </div>
   
         {/* Paginação */}
-        <div className="flex items-center justify-between space-x-2 py-4">
+        <div className="flex items-center justify-between py-4 w-full">
           <div className="flex-1 text-sm text-muted-foreground">
             {table.getFilteredSelectedRowModel().rows.length} de{" "}
             {table.getFilteredRowModel().rows.length} linha(s) selecionada(s).

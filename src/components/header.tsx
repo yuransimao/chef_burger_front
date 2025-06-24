@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, FormSearch } from './'
 import { BtnSignIn } from './btnSignIn';
-import {BtnOpenSheetcarrinho} from "./btnopenSheetcarrinho"
+
 function Header() {
     return (
         <header className='w-full lg:w-[calc(100%-14rem)] fixed  right-0 z-30'>
@@ -10,7 +10,7 @@ function Header() {
                     <FormSearch />
 
                     <div className='flex justify-end items-center gap-1'>
-                        <BtnOpenSheetcarrinho/>
+                        
                         <BtnSignIn />
                     </div>
 
