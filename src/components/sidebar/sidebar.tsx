@@ -26,7 +26,7 @@ function Sidebar() {
   ]
 
   return (
-    <div className='w-full lg:w-56 fixed  bottom-0 bg-transparent lg:h-svh z-30'>
+    <div className='w-full lg:w-56 fixed  lg:bottom-0 bottom-20 bg-transparent lg:h-svh z-30 h-10'>
       <Card className='lg:h-full rounded-tl-none rounded-bl-none rounded-tr-none rounded-br-none  lg:rounded-tr-lg lg:rounded-br-lg lg:bg-card bg-black'>
         <div className='flex flex-row lg:flex-col  items-center justify-center lg:space-y-16 lg:gap-0 gap-4 lg:px-0 px-4 '>
           <div className="inline-block "> 
@@ -44,14 +44,14 @@ function Sidebar() {
                   href={item.href}
                   key={index}
                   className={clsx(
-                    'flex items-center flex-col lg:flex-row gap-3 lg:px-6  px-2 py-3 rounded-sm transition-colors w-full',
+                    'flex items-center flex-col lg:flex-row gap-3 lg:px-6  px-2 py-3 rounded-sm transition-colors w-full ',
                     isActive
                       ? 'lg:!bg-red-500/5 text-primary font-semibold'
                       : 'text-muted-foreground hover:!bg-red-500/5 hover:text-primary'
                   )}
                 >
                   <span>{item.icon}</span>
-                  <span>{item.title}</span>
+                  <span className="whitespace-nowrap ">{item.title}</span>
                 </Link>
               )
             })}

@@ -5,9 +5,14 @@ import { FcGoogle } from "react-icons/fc";
 import { FormLogin } from './_components/formLogin'
 import Link from 'next/link'
 import Image from "next/image";
+import type { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Entrar | Chef Burguer",
+  description: "Entra com sua conta e aproveite o melhor do nosso cardápio.",
+};
 function Login() {
   return (
-    <div className="w-full h-svh flex items-center justify-center">
+    <div className="w-full h-svh flex items-center justify-center px-4">
       <Toaster/>
         <Card className=' w-full max-w-[400px] p-4 bg-[hsla(0,0%,100%,0.050980392156862744)] backdrop-blur-lg'>
             <div className="w-full space-y-5">

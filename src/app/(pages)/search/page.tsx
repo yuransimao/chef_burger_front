@@ -2,6 +2,12 @@
 
 import { useSearchParams } from 'next/navigation'
 import { ProductListSearch} from "@/components"
+
+import type { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Pesquisa | Chef Burguer",
+  description: "Aproveite o melhor do nosso cardápio.",
+};
 export default function Search() {
     const searchParams = useSearchParams()
     const query = searchParams.get('query')

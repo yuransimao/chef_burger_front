@@ -29,13 +29,13 @@ api.interceptors.response.use(
     const isAuthError = error.response?.status === 401;
     const user = auth.currentUser;
 
-    // Se ainda está logando ou não há usuário, não redireciona
+   
     if (isAuthError && user) {
       console.warn("Token expirado ou inválido. Considerar redirecionar.");
       // auth.signOut(); // Só se quiser forçar logout
-      if (window.location.pathname !== '/login') {
+     /* if (window.location.pathname !== '/login') {
         window.location.href = '/login';
-      }
+      }*/
     }
 
     return Promise.reject(error);

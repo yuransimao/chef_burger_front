@@ -1,10 +1,16 @@
 "use client"
 import React from 'react';
 import { useMinhasReservas} from '@/hooks/useReserva';
-
 import { Calendar,  AlertCircle } from 'lucide-react';
 import { CardReserva } from './_components/cardReserva';
 import { useAuth } from '@/hooks/useAuth'
+import type { Metadata } from "next";
+
+
+export const metadata: Metadata = {
+  title: "Reservas | Chef Burguer",
+  description: "Aproveite o melhor do nosso cardápio.",
+};
 
 function Reservas() {
   const { data: reservas, isLoading, error } = useMinhasReservas();

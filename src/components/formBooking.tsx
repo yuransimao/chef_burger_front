@@ -134,13 +134,13 @@ function FormBooking() {
                         control={form.control}
                         name="duracao"
                         render={({ field }) => (
-                            <FormItem>
+                            <FormItem className="w-1/2">
                                 <FormLabel>Duração (min)</FormLabel>
                                 <FormControl>
                                     <Input
                                         placeholder="Digite duração"
                                         {...field}
-                                        className="rounded"
+                                        className="rounded "
                                     />
                                 </FormControl>
                                 <FormMessage />
@@ -149,20 +149,21 @@ function FormBooking() {
                     />
                 </div>
 
-                <div className='flex items-center gap-3'>
+                <div className='flex items-center gap-3 w-full'>
                     <FormField
                         control={form.control}
                         name="table"
                         render={({ field }) => (
-                            <FormItem>
+                            <FormItem className='w-1/2'>
                                 <FormLabel>Mesa</FormLabel>
                                 <FormControl>
                                     <Select
                                         value={field.value}
                                         onValueChange={field.onChange}
                                         disabled={isLoadingMesas}
+                                        
                                     >
-                                        <SelectTrigger className="rounded">
+                                        <SelectTrigger className="rounded w-full">
                                             <SelectValue
                                                 placeholder={
                                                     isLoadingMesas
@@ -202,13 +203,13 @@ function FormBooking() {
                         control={form.control}
                         name="numberperson"
                         render={({ field }) => (
-                            <FormItem>
+                            <FormItem className="w-1/2">
                                 <FormLabel>Número de Pessoas</FormLabel>
                                 <FormControl>
                                     <Input
                                         placeholder="Capacidade da mesa"
                                         {...field}
-                                        className="rounded"
+                                        className="rounded w-full"
                                         readOnly
                                         disabled
                                     />

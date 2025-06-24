@@ -29,10 +29,7 @@ export default function Home() {
       <main>
         <section className="w-full">
           <div>
-            <PromoBanner
-              src="/promo-banner-01.png"
-              alt="Até 30% de desconto em pizzas!"
-            />
+            <PromoBanner/>
           </div>
           <div className="pt-6 space-y-4">
               <h2 className="font-semibold">Escolhe uma categoria</h2>

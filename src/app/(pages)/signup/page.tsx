@@ -1,11 +1,20 @@
 import React from 'react'
+import type { Metadata } from "next";
 import Image from "next/image";
 import { Separator, Button, Toaster } from "@/components"
 import { FcGoogle } from "react-icons/fc";
 import Link from 'next/link'
 import { FormSignup } from './_components/formSignup';
+
+
+export const metadata: Metadata = {
+  title: "Registrar-se | Chef Burguer",
+  description: "Crie sua conta e aproveite o melhor do nosso cardápio.",
+};
 function Signup() {
     return (
+        <>
+        
         <div className="h-svh flex ">
             <Toaster/>
             <div className="w-[70%] h-full brightness-50 lg:block md:blok sm:block hidden">
@@ -39,9 +48,9 @@ function Signup() {
                         <h2 className=' font-bold text-lg text-center'>Registra-se</h2>
                         <p className=" text-sm  text-gray-300 text-center">Já possui uma conta ?
                             <Link
-                                href='/signup'
+                                href='/login'
                                 className="text-blue-500 font-bold ml-2 " >
-                                Cadastra-se
+                               Entrar
                             </Link>
                         </p>
                     </div>
@@ -68,6 +77,7 @@ function Signup() {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 
