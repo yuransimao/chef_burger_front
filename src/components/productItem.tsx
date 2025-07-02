@@ -74,7 +74,7 @@ const ProductItem = React.memo(function ProductItem({
           <span className='text-sm font-bold'>{FormatCurrency(preco)}</span>
           <button
             onClick={adicionarProduto}
-            className="bg-red-500 p-2 rounded transition-colors duration-300 hover:bg-red-700"
+            className="bg-red-500 p-2 rounded cursor-pointer transition-colors duration-300 hover:bg-red-700"
           >
             <SquarePlus size={18} />
           </button>
