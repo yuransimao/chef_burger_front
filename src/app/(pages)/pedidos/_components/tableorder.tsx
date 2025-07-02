@@ -173,12 +173,12 @@ function TableOrder() {
         </div>
   
         {/* Paginação */}
-        <div className="flex items-center justify-between py-4 w-full">
+        <div className="flex flex-col lg:flex-row md:flex-row items-center justify-between py-4 w-full">
           <div className="flex-1 text-sm text-muted-foreground">
             {table.getFilteredSelectedRowModel().rows.length} de{" "}
             {table.getFilteredRowModel().rows.length} linha(s) selecionada(s).
           </div>
-          <div className="flex items-center space-x-6 lg:space-x-8">
+          <div className="flex flex-col lg:flex-row md:flex-row items-center space-6 lg:space-8">
             <div className="flex items-center space-x-2">
               <p className="text-sm font-medium">Linhas por página</p>
               <Select
@@ -203,7 +203,7 @@ function TableOrder() {
               Página {table.getState().pagination.pageIndex + 1} de{" "}
               {table.getPageCount()}
             </div>
-            <div className="flex items-center space-x-2">
+            <div className="flex  items-center space-x-2">
               <Button
                 variant="outline"
                 className="hidden h-8 w-8 p-0 lg:flex"

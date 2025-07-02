@@ -175,10 +175,10 @@ function FinalizeOrderForm() {
     
                     <Button
                         type="submit"
-                        className=""
+                        className="transition-colors bg-red-500 hover:bg-red-700"
                         disabled={isLoadingMesas || createPedidoMutation.isPending}               >
                         {createPedidoMutation.isPending ? (
-                                <div className="flex items-center gap-2 transition-colors bg-red-500 hover:bg-red-700">
+                                <div className="flex items-center gap-2 ">
                                   <Loader2 size={16} className="animate-spin" />
                                   Concluindo...
                                 </div>
